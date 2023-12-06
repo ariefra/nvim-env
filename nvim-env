@@ -62,7 +62,7 @@ case $1 in
 	;;
 "--ls")
 	echo "list of nvim configs:"
-	ls -1 ~/nvim
+	ls -1 $NVIM_HOME
 	;;
 "--run")
 	if [[ "$2" != "" ]]; then
