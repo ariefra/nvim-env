@@ -39,6 +39,7 @@ nvim-env is a user script to make it easy to install and use multiple config for
 
 <details><summary>Using Git</summary>
 
+
 ```sh
 git clone https://github.com/ariefra/nvim-env
 cd nvim-env
@@ -51,6 +52,7 @@ cd nvim-env
 ## 🚀 Usage
 
 <details><summary>add new environment</summary>
+
 
 nvim-env --add [env] [git-url]
 
@@ -71,6 +73,7 @@ nvim-env --add [env] [git-url]
 
 <details><summary>run nvim environment</summary>
 
+
 nvim-env --run [env] [other_nvim_args]
 
   Examples:
@@ -83,6 +86,7 @@ nvim-env --run [env] [other_nvim_args]
 
 <details><summary>list available nvim environment</summary>
 
+
 nvim-env --ls
 
   Examples:
@@ -93,6 +97,7 @@ nvim-env --ls
 </details>
 
 <details><summary>delete nvim environment</summary>
+
 
 nvim-env --rm [env]
 
@@ -107,7 +112,9 @@ nvim-env --rm [env]
 
 <details><summary>Use user's home for common nvim environment</summary>
 
+
 NVIM_USE_USERHOME=(true | false) nvim-env [parameters]
+
   this prefix if set to true (default) will cause nvim-env to use your user home 
   for data,state & cache using XDG_DATA_HOME, XDG_STATE_HOME, XDG_CACHE_HOME
   this will save space on your disk, and faster downloads for common plugins.
