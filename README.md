@@ -74,11 +74,10 @@ chmod +x nvim-env
   nvim-env --add nv       https://github.com/appelgriebsch/Nv
   nvim-env --add mnabila  https://github.com/mnabila/nvimrc
   nvim-env --add znvim    https://github.com/Zeddnyx/Znvim
+  nvim-env --add adics    https://github.com/AdiCahyaSaputra/my-neovim-setup
   nvim-env --add lunarvim https://github.com/LunarVim/LunarVim
   nvim-env --add astrovim https://github.com/AstroNvim/AstroNvim
-  nvim-env --add fitrh    https://github.com/fitrh/init.nvim
   nvim-env --add doomnvim https://github.com/doom-neovim/doom-nvim
-  nvim-env --add adics    https://github.com/AdiCahyaSaputra/my-neovim-setup
   ```
 
 </details>
