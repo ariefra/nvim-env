@@ -100,7 +100,7 @@ chmod +x nvim-env
 <details><summary>List available nvim environment</summary>
 
 
-nvim-env --ls
+- nvim-env --ls
 
   Examples:
   ```sh
