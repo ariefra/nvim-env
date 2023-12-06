@@ -43,6 +43,7 @@ nvim-env is a user script to make it easy to install and use multiple config for
 ```sh
 git clone https://github.com/ariefra/nvim-env
 cd nvim-env
+chmod +x nvim-env
 ./nvim-env --help
 ```
 
@@ -51,10 +52,22 @@ cd nvim-env
 
 ## 🚀 Usage
 
-<details><summary>add new environment</summary>
+<details><summary>Display usage information</summary>
 
 
-nvim-env --add [env] [git-url]
+- nvim-env --help
+
+  Examples:
+  ```sh
+  nvim-env --help
+  ```
+
+</details>
+
+<details><summary>Add new environment</summary>
+
+
+- nvim-env --add [env] [git-url]
 
   Examples:
   ```sh
@@ -71,10 +84,10 @@ nvim-env --add [env] [git-url]
 </details>
 
 
-<details><summary>run nvim environment</summary>
+<details><summary>Run nvim environment</summary>
 
 
-nvim-env --run [env] [other_nvim_args]
+- nvim-env --run [env] [other_nvim_args]
 
   Examples:
   ```sh
@@ -84,7 +97,7 @@ nvim-env --run [env] [other_nvim_args]
 
 </details>
 
-<details><summary>list available nvim environment</summary>
+<details><summary>List available nvim environment</summary>
 
 
 nvim-env --ls
@@ -96,10 +109,10 @@ nvim-env --ls
 
 </details>
 
-<details><summary>delete nvim environment</summary>
+<details><summary>Delete nvim environment</summary>
 
 
-nvim-env --rm [env]
+- nvim-env --rm [env]
 
   Examples:
   ```sh
