@@ -17,9 +17,6 @@
     <a href="https://github.com/ariefra/nvim-env">
       <img alt="Repo Size" src="https://img.shields.io/github/repo-size/ariefra/nvim-env?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41" />
     </a>
-    <a href="https://twitter.com/intent/follow?screen_name=folke">
-      <img alt="follow on Twitter" src="https://img.shields.io/twitter/follow/folke?style=for-the-badge&logo=twitter&color=8aadf3&logoColor=D9E0EE&labelColor=302D41" />
-    </a>
 </div>
 
 nvim-env is a user script to make it easy to install and use multiple config for your Neovim.
