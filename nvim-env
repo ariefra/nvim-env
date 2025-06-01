@@ -4,7 +4,7 @@ NAME=$(basename $0)
 
 # base variables
 NVIM_HOME=${NVIM_HOME:-$HOME/$NAME}
-NVIM_USE_USERHOME=${NVIM_USE_USERHOME:-true}
+NVIM_USE_USERHOME=${NVIM_USE_USERHOME:-false}
 
 case $1 in
 "-V")
@@ -34,12 +34,12 @@ case $1 in
 		shift 2
 		mkdir -p $NVIM_HOME
 	fi
-	if ! $NVIM_USE_USERHOME; then
-		mkdir -p $NVIM_HOME/{.local/share,.local/state,.cache}
-		HOME=$NVIM_HOME nvim $@
-	else
-		XDG_CONFIG_HOME=$NVIM_HOME/.config nvim $@
-	fi
+	# if ! $NVIM_USE_USERHOME; then
+	# 	mkdir -p $NVIM_HOME/{.local/share,.local/state,.cache}
+	# 	HOME=$NVIM_HOME nvim $@
+	# else
+	# 	XDG_CONFIG_HOME=$NVIM_HOME/.config nvim $@
+	# fi
 	;;
 "--linkhome")
 	if [[ "$2" != "" ]]; then
@@ -70,9 +70,9 @@ case $1 in
 		echo running $NVIM_HOME
 		shift 2
 		if ! $NVIM_USE_USERHOME; then
-			HOME=$NVIM_HOME nvim $@
+			HOME=$NVIM_HOME nvim "$@"
 		else
-			XDG_CONFIG_HOME=$NVIM_HOME/.config nvim $@
+			XDG_CONFIG_HOME=$NVIM_HOME/.config nvim "$@"
 		fi
 	else
 		echo using default nvim
@@ -95,4 +95,3 @@ case $1 in
 	nvim $@
 	;;
 esac
-# vim:ts=4:shiftwidth=4:expandtab
