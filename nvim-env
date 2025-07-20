@@ -62,7 +62,7 @@ case $1 in
         ;;
     "--ls")
         echo "list of nvim configs:"
-        ls -1 "$NVIM_HOME"
+        for configs in "$NVIM_HOME"/*; do echo -n "$(basename """$configs""")"; awk '/url/ {print "\t" $3}' "$configs/.config/nvim/.git/config" ; done | column -t
         ;;
     "--run")
         if [[ "$2" != "" ]]; then
