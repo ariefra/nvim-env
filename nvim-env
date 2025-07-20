@@ -1,97 +1,97 @@
 #!/bin/env bash
 VERSION=0.1.0
-NAME=$(basename $0)
+NAME=$(basename "$0")
 
 # base variables
 NVIM_HOME=${NVIM_HOME:-$HOME/$NAME}
 NVIM_USE_USERHOME=${NVIM_USE_USERHOME:-false}
 
 case $1 in
-"-V")
-	echo "$NAME version $VERSION"
-	echo "use $NAME --help, for options"
-	;;
-"--help")
-	echo "syntax: $0 [parameter]..."
-	echo "parameter:"
-	echo "  -V                  show $env version"
-	echo "  --help              show this help"
-	echo "  --add [env] [git]   add ~/$NAME/[env] and git clone [git] to that folder, run after that"
-	echo "  --linkhome          add symlink to data,state,cache"
-	echo "  --rm [env]          remove ~/$NAME/[env]"
-	echo "  --ls                list available env"
-	echo "  --run [env]         switch nvim to ~/$NAME/[env] or ~/.config/nvim"
-	echo "  --clean [env]       clean $NAME/[env] data,state,cache"
-	echo "  --cleanhome         clean user's nvim data,state,cache"
-	;;
-"--add")
-	if [[ "$2" != "" ]]; then
-		NVIM_HOME=$NVIM_HOME/$2
-		if [ ! -d "$NVIM_HOME" ] && [[ "$3" == "http"* ]]; then
-			git clone $3 $NVIM_HOME/.config/nvim
-			shift
-		fi
-		shift 2
-		mkdir -p $NVIM_HOME
-	fi
-	# if ! $NVIM_USE_USERHOME; then
-	# 	mkdir -p $NVIM_HOME/{.local/share,.local/state,.cache}
-	# 	HOME=$NVIM_HOME nvim $@
-	# else
-	# 	XDG_CONFIG_HOME=$NVIM_HOME/.config nvim $@
-	# fi
-	;;
-"--linkhome")
-	if [[ "$2" != "" ]]; then
-		NVIM_HOME=$NVIM_HOME/$2
-		echo linking $NVIM_HOME to $HOME
-		if $NVIM_USE_USERHOME; then
-			sln ${XDG_DATA_HOME:-$HOME/.local/share}/nvim $NVIM_HOME/.config/nvim/share
-			sln ${XDG_STATE_HOME:-$HOME/.local/state}/nvim $NVIM_HOME/.config/nvim/state
-			sln ${XDG_CACHE_HOME:-$HOME/.cache}/nvim $NVIM_HOME/.config/nvim/cache
-			ls $NVIM_HOME/.config/nvim/{share,state,cache}
-		fi
-	fi
-	;;
-"--rm")
-	if [[ "$2" != "" ]]; then
-		NVIM_HOME=$NVIM_HOME/$2
-		echo removing $NVIM_HOME
-		rm -rf $NVIM_HOME
-	fi
-	;;
-"--ls")
-	echo "list of nvim configs:"
-	ls -1 $NVIM_HOME
-	;;
-"--run")
-	if [[ "$2" != "" ]]; then
-		NVIM_HOME=$NVIM_HOME/$2
-		echo running $NVIM_HOME
-		shift 2
-		if ! $NVIM_USE_USERHOME; then
-			HOME=$NVIM_HOME nvim "$@"
-		else
-			XDG_CONFIG_HOME=$NVIM_HOME/.config nvim "$@"
-		fi
-	else
-		echo using default nvim
-		shift
-		nvim $@
-	fi
-	;;
-"--clean")
-	if [[ "$2" != "" ]]; then
-		NVIM_HOME=$NVIM_HOME/$2
-		echo cleaning $NVIM_HOME
-		rm -rf $NVIM_HOME/{.local/share,.local/state,.cache}
-	fi
-	;;
-"--cleanhome")
-	echo cleaning $HOME
-	rm -rf $HOME/{.local/share,.local/state,.cache}/nvim
-	;;
-*)
-	nvim $@
-	;;
+    "-V")
+        echo "$NAME version $VERSION"
+        echo "use $NAME --help, for options"
+        ;;
+    "--help")
+        echo "syntax: $0 [parameter]..."
+        echo "parameter:"
+        echo "  -V                  show $NAME version"
+        echo "  --help              show this help"
+        echo "  --add [env] [git]   add ~/$NAME/[env] and git clone [git] to that folder, run after that"
+        echo "  --linkhome          add symlink to data,state,cache"
+        echo "  --rm [env]          remove ~/$NAME/[env]"
+        echo "  --ls                list available env"
+        echo "  --run [env]         switch nvim to ~/$NAME/[env] or ~/.config/nvim"
+        echo "  --clean [env]       clean $NAME/[env] data,state,cache"
+        echo "  --cleanhome         clean user's nvim data,state,cache"
+        ;;
+    "--add")
+        if [[ "$2" != "" ]]; then
+            NVIM_HOME=$NVIM_HOME/$2
+            if [ ! -d "$NVIM_HOME" ] && [[ "$3" == "http"* ]]; then
+                git clone "$3" "$NVIM_HOME/.config/nvim"
+                shift
+            fi
+            shift 2
+            mkdir -p "$NVIM_HOME"
+        fi
+        # if ! $NVIM_USE_USERHOME; then
+        # 	mkdir -p $NVIM_HOME/{.local/share,.local/state,.cache}
+        # 	HOME=$NVIM_HOME nvim $@
+        # else
+        # 	XDG_CONFIG_HOME=$NVIM_HOME/.config nvim $@
+        # fi
+        ;;
+    "--linkhome")
+        if [[ "$2" != "" ]]; then
+            NVIM_HOME=$NVIM_HOME/$2
+            echo linking "$NVIM_HOME" to "$HOME"
+            if $NVIM_USE_USERHOME; then
+                sln "${XDG_DATA_HOME:-$HOME/.local/share}/nvim" "$NVIM_HOME/.config/nvim/share"
+                sln "${XDG_STATE_HOME:-$HOME/.local/state}/nvim" "$NVIM_HOME/.config/nvim/state"
+                sln "${XDG_CACHE_HOME:-$HOME/.cache}/nvim" "$NVIM_HOME/.config/nvim/cache"
+                ls "$NVIM_HOME/.config/nvim/"{share,state,cache}
+            fi
+        fi
+        ;;
+    "--rm")
+        if [[ "$2" != "" ]]; then
+            NVIM_HOME=$NVIM_HOME/$2
+            echo removing "$NVIM_HOME"
+            rm -rf "$NVIM_HOME"
+        fi
+        ;;
+    "--ls")
+        echo "list of nvim configs:"
+        ls -1 "$NVIM_HOME"
+        ;;
+    "--run")
+        if [[ "$2" != "" ]]; then
+            NVIM_HOME=$NVIM_HOME/$2
+            echo running "$NVIM_HOME"
+            shift 2
+            if ! $NVIM_USE_USERHOME; then
+                HOME="$NVIM_HOME" nvim "$@"
+            else
+                XDG_CONFIG_HOME="$NVIM_HOME/.config" nvim "$@"
+            fi
+        else
+            echo using default nvim
+            shift
+            nvim "$@"
+        fi
+        ;;
+    "--clean")
+        if [[ "$2" != "" ]]; then
+            NVIM_HOME=$NVIM_HOME/$2
+            echo cleaning "$NVIM_HOME"
+            rm -rf "$NVIM_HOME/"{.local/share,.local/state,.cache}
+        fi
+        ;;
+    "--cleanhome")
+        echo cleaning "$HOME"
+        rm -rf "$HOME/"{.local/share,.local/state,.cache}/nvim
+        ;;
+    *)
+        nvim "$@"
+        ;;
 esac
